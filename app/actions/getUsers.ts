@@ -4,7 +4,7 @@ import getSession from "./getSession";
 const getUsers = async () => {
   const session = await getSession();
 
-  if (!session?.user?.email) return null;
+  if (!session?.user?.email) return [];
 
   try {
     const users = await prisma.user.findMany({
@@ -20,7 +20,7 @@ const getUsers = async () => {
 
     return users;
   } catch (error: any) {
-    return null;
+    return [];
   }
 };
 
